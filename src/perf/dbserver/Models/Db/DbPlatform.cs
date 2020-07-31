@@ -9,6 +9,6 @@ namespace QuicDataServer.Models.Db
     {
         public int DbPlatformId { get; set; }
         public string PlatformName { get; set; } = null!;
-        public ICollection<DbTest> Tests { get; set; } = null!;
+        public ICollection<DbThroughputTestRecord> ThroughputTests { get; set; } = null!;
     }
 }

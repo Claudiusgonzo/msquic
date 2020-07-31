@@ -15,8 +15,8 @@ namespace QuicDataServer.Data
         }
 
         public DbSet<DbPlatform> Platforms { get; set; } = null!;
-        public DbSet<DbTest> Tests { get; set; } = null!;
-        public DbSet<DbTestRecord> TestRecords { get; set; } = null!;
+        public DbSet<DbThroughputTest> Tests { get; set; } = null!;
+        public DbSet<DbThroughputTestRecord> TestRecords { get; set; } = null!;
         public DbSet<DbMachine> Machines { get; set; } = null!;
 
     }

@@ -183,7 +183,7 @@ namespace QuicDataServer.Controllers
                 platformId = entity.Entity.DbPlatformId;
             }
 
-            var testEntity = _context.Tests.Add(new DbTest
+            var testEntity = _context.Tests.Add(new DbThroughputTest
             {
                 DbPlatformId = platformId.Value,
                 TestName = testName
@@ -221,11 +221,11 @@ namespace QuicDataServer.Controllers
             // Get Test Records 
             (var testId, var machineId) = await VerifyPlatformTestAndMachine(testResult.PlatformName, testResult.TestName, testResult.MachineName);
 
-            var newRecord = new DbTestRecord
+            var newRecord = new DbThroughputTestRecord
             {
                 CommitHash = testResult.CommitHash,
                 TestDate = testResult.Time,
-                TestResults = testResult.IndividualRunResults.Select(x => new TestResult { Result = x }).ToList(),
+                TestResults = testResult.IndividualRunResults.Select(x => new ThroughputTestResult { Result = x }).ToList(),
                 DbMachineId = machineId,
                 DbTestId = testId,
             };
@@ -262,11 +262,11 @@ namespace QuicDataServer.Controllers
             // Get Test Records 
             (var testId, var machineId) = await VerifyPlatformTestAndMachine(testResult.PlatformName, testResult.TestName, testResult.MachineName);
 
-            var newRecord = new DbTestRecord
+            var newRecord = new DbThroughputTestRecord
             {
                 CommitHash = testResult.CommitHash,
                 TestDate = DateTime.UtcNow,
-                TestResults = testResult.IndividualRunResults.Select(x => new TestResult { Result = x }).ToList(),
+                TestResults = testResult.IndividualRunResults.Select(x => new ThroughputTestResult { Result = x }).ToList(),
                 DbMachineId = machineId,
                 DbTestId = testId,
             };
